@@ -22,7 +22,7 @@ public class Main {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("sixFiles/ClassToSave.txt"))) {
 
             ClassToSave objFromFile = (ClassToSave) ois.readObject();
-            System.out.println("Usual serialization result:\n" + objFromFile);
+            System.out.println("Usual deserialization result:\n" + objFromFile);
 
         } catch (Exception e) {
             e.fillInStackTrace();
@@ -53,6 +53,6 @@ public class Main {
             System.out.println("Error reading file:\n" + e.getMessage());
         }
 
-        System.out.println("Gson serialization result\n" + objFromFile);
+        System.out.println("Gson deserialization result:\n" + objFromFile);
     }
 }
