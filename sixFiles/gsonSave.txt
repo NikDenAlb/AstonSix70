@@ -1,0 +1,1 @@
+{"field1":"Cтрока","field2":11,"field3":124214.0,"field4":true}
