@@ -1,4 +1,4 @@
-package four;
+package Stage1.four;
 
 import org.jetbrains.annotations.NotNull;
 

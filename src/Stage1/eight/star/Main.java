@@ -1,4 +1,4 @@
-package eight.star;
+package Stage1.eight.star;
 
 public class Main {
     public static void main(String[] args) {

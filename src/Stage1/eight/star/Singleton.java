@@ -1,4 +1,4 @@
-package eight.star;
+package Stage1.eight.star;
 
 public class Singleton {
     private static volatile Singleton instance; //volatile - чтение не из кеша а сразу из оперативной памяти

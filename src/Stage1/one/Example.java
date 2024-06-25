@@ -1,6 +1,6 @@
-package one;
+package Stage1.one;
 
-import static one.ExampleService.checkField;
+import static Stage1.one.ExampleService.checkField;
 
 public class Example {
     private String field1;

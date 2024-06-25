@@ -1,4 +1,4 @@
-package six.trainer;
+package Stage1.six.trainer;
 
 import java.io.*;
 

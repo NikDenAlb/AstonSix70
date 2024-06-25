@@ -1,4 +1,4 @@
-package five;
+package Stage1.five;
 
 import java.util.*;
 import java.util.stream.Collectors;

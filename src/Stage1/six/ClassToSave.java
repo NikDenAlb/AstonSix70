@@ -1,4 +1,4 @@
-package six;
+package Stage1.six;
 
 
 import java.io.Serializable;

@@ -1,4 +1,4 @@
-package six;
+package Stage1.six;
 
 import com.google.gson.Gson;
 

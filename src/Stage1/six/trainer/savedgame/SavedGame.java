@@ -1,4 +1,4 @@
-package six.trainer.savedgame;
+package Stage1.six.trainer.savedgame;
 
 import java.io.Serializable;
 import java.util.Arrays;

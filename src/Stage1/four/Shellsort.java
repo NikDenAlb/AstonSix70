@@ -1,4 +1,4 @@
-package four;
+package Stage1.four;
 
 public class Shellsort<T extends Comparable<T>> {
     private final T[] arr;

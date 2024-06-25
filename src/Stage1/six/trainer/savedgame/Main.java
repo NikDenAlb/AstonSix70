@@ -1,10 +1,10 @@
-package six.trainer.savedgame;
+package Stage1.six.trainer.savedgame;
 
 import java.io.*;
 
 public class Main {
 
-    public static void main2(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
 
         //создаем наш объект
         String[] territoryInfo = {"У Испании 6 провинций", "У России 10 провинций", "У Франции 8 провинций"};
@@ -22,15 +22,5 @@ public class Main {
 
         //закрываем поток и освобождаем ресурсы
         objectOutputStream.close();
-    }
-
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-
-        FileInputStream fileInputStream = new FileInputStream("save.txt");
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-
-        SavedGame savedGame = (SavedGame) objectInputStream.readObject();
-
-        System.out.println(savedGame);
     }
 }
