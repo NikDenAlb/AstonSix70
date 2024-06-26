@@ -107,14 +107,14 @@ public class MyLinkedList<E extends Comparable<E>> {
         }
         if (index == 0) {
             Node<E> newNode = new Node<>(null, e, getNode(index));
-            getNode(index).next = newNode;
+            getNode(index).prev = newNode;
             first = newNode;
             size++;
             return;
         }
         Node<E> newNode = new Node<>(getNode(index - 1), e, getNode(index));
-        getNode(index - 1).next = newNode;
         getNode(index).prev = newNode;
+        getNode(index - 1).next = newNode;
         size++;
     }
 
