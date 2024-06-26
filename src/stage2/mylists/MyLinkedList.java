@@ -162,6 +162,16 @@ public class MyLinkedList<E extends Comparable<E>> {
         return oldValue;
     }
 
+    /**
+     * Removes all of the elements from this list.
+     * remove is dirty, just cleaning links
+     */
+    public void clear() {
+        this.size = 0;
+        first = null;
+        last = null;
+    }
+
     @Override
     public String toString() {
         if (size == 0) {
