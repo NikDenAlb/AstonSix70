@@ -9,7 +9,7 @@ import java.util.Objects;
  *
  * @author Denis Nikulin
  */
-public class MyArrayList<E> {
+public class MyArrayList<E extends Comparable<E>> {
     /**
      * The size of the ArrayList (how it looks outside).
      */
@@ -49,7 +49,7 @@ public class MyArrayList<E> {
      * any subsequent elements to the right (adds one to their indices).
      *
      * @param index index at which the specified element is to be inserted
-     * @param e element to be inserted
+     * @param e     element to be inserted
      * @throws IndexOutOfBoundsException if the {@code index} is out of range
      */
     public void add(int index, E e) {
@@ -142,6 +142,30 @@ public class MyArrayList<E> {
      */
     public int size() {
         return size;
+    }
+
+    /**
+     * Sorts the array using the BubbleSort algorithm.
+     *
+     * @see <a href="http://www.angelikalanger.com/GenericsFAQ/FAQSections/TechnicalDetails.html#FAQ001">What is an "unchecked" warning</a>
+     */
+    public void sort() {
+        for (int i = 0; i < size - 1; i++) {
+            boolean didSwap = false;
+            for (int j = 0; j < size - i - 1; j++) {
+                @SuppressWarnings("unchecked") E e1 = (E) elementData[j];
+                @SuppressWarnings("unchecked") E e2 = (E) elementData[j + 1];
+                if (e1.compareTo(e2) > 0) {
+                    @SuppressWarnings("unchecked") E temp = (E) elementData[j];
+                    elementData[j] = elementData[j + 1];
+                    elementData[j + 1] = temp;
+                    didSwap = true;
+                }
+            }
+            if (!didSwap) {
+                break;
+            }
+        }
     }
 
     @Override
