@@ -127,6 +127,15 @@ public class MyArrayList<E> {
     }
 
     /**
+     * Removes all of the elements from this list.  The list will
+     * be empty with inside array of length 5.
+     */
+    public void clear() {
+        this.size = 0;
+        elementData = new Object[5];
+    }
+
+    /**
      * get size of the array
      *
      * @return size of the array
