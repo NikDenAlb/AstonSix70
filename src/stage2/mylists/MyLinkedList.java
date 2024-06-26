@@ -1,5 +1,6 @@
 package stage2.mylists;
 
+import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -35,6 +36,11 @@ public class MyLinkedList<E extends Comparable<E>> {
             this.next = next;
             this.prev = prev;
         }
+
+        @Override
+        public String toString() {
+            return e.toString();
+        }
     }
 
     /**
@@ -46,10 +52,10 @@ public class MyLinkedList<E extends Comparable<E>> {
     /**
      * get the Node by index
      *
-     * @param index
+     * @param index index of the needed Node
      * @return Node<E>
      */
-    private Node<E> getNode (int index) {
+    private Node<E> getNode(int index) {
         Objects.checkIndex(index, size);
         Node<E> curr;
         if (index < (size >> 1)) {
@@ -62,5 +68,36 @@ public class MyLinkedList<E extends Comparable<E>> {
                 curr = curr.prev;
         }
         return curr;
+    }
+
+    /**
+     * Appends the specified element to the end of this list.
+     *
+     * @param e element to be appended to this list
+     * @return {@code true} (as specified by {@link Collection#add})
+     */
+    public boolean add(E e) {
+        if (size == 0) {
+            first = new Node<>(null, e, null);
+            last = first;
+            size++;
+            return true;
+        }
+        Node<E> newNode = new Node<>(getNode(size - 1), e, null);
+        getNode(size - 1).next = newNode;
+        last = newNode;
+        size++;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        for (int i = 0; i < size-1; i++) {
+            s.append(getNode(i));
+            s.append(" ");
+        }
+        s.append(getNode(size - 1));
+        return s.toString();
     }
 }
