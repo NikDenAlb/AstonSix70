@@ -118,6 +118,17 @@ public class MyLinkedList<E extends Comparable<E>> {
         size++;
     }
 
+    /**
+     * get the element by index
+     *
+     * @param index the index of the element
+     * @return the element of the param index
+     * @throws IndexOutOfBoundsException if the {@code index} is out of range
+     */
+    public E get(int index) {
+        Objects.checkIndex(index, size);
+        return getNode(index).e;
+    }
 
     @Override
     public String toString() {
