@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class MyArrayList<E> {
     /**
-     * The size of the ArrayList (the number of elements it contains).
+     * The size of the ArrayList (how it looks outside).
      */
     private int size;
     /**
@@ -44,13 +44,34 @@ public class MyArrayList<E> {
     }
 
     /**
+     * Inserts the specified element at the specified position in this
+     * list. Shifts the element currently at that position (if any) and
+     * any subsequent elements to the right (adds one to their indices).
+     *
+     * @param index index at which the specified element is to be inserted
+     * @param e element to be inserted
+     * @throws IndexOutOfBoundsException if the {@code index} is out of range
+     */
+    public void add(int index, E e) {
+        Objects.checkIndex(index, size);
+        if (elementData.length == size) {
+            elementData = Arrays.copyOf(elementData, size + 5);
+        }
+        System.arraycopy(elementData, index,
+                elementData, index + 1,
+                size++ - index);
+        elementData[index] = e;
+    }
+
+    /**
      * Removes the element at the specified position in this list.
      * Shifts any subsequent elements to the left (subtracts one from their
      * indices).
      *
      * @param index the index of the element to be removed
      * @return the element that was removed from the list
-     * @throws IndexOutOfBoundsException {@inheritDoc}
+     * @throws IndexOutOfBoundsException if the {@code index} is out of range
+     * @see <a href="http://www.angelikalanger.com/GenericsFAQ/FAQSections/TechnicalDetails.html#FAQ001">What is an "unchecked" warning</a>
      */
     public E remove(int index) {
         Objects.checkIndex(index, size);
@@ -72,15 +93,18 @@ public class MyArrayList<E> {
     /**
      * get the element by index
      *
-     * @param index the index of the element to be removed
-     * @return the element
-     * @throws IndexOutOfBoundsException {@inheritDoc}
+     * @param index the index of the element
+     * @return the element of the param index
+     * @throws IndexOutOfBoundsException if the {@code index} is out of range
      */
     public E get(int index) {
         Objects.checkIndex(index, size);
         return elementData(index);
     }
 
+    /**
+     * @see <a href="http://www.angelikalanger.com/GenericsFAQ/FAQSections/TechnicalDetails.html#FAQ001">What is an "unchecked" warning</a>
+     */
     @SuppressWarnings("unchecked")
     E elementData(int index) {
         return (E) elementData[index];
