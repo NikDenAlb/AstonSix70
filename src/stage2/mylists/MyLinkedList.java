@@ -130,6 +130,38 @@ public class MyLinkedList<E extends Comparable<E>> {
         return getNode(index).e;
     }
 
+    /**
+     * Removes the element at the specified position in this list.
+     * remove is dirty, just cleaning links
+     *
+     * @param index the index of the element to be removed
+     * @return the element that was removed from the list
+     * @throws IndexOutOfBoundsException if the {@code index} is out of range
+     */
+    public E remove(int index) {
+        Objects.checkIndex(index, size);
+        E oldValue = get(index);
+        if (index == 0) {
+            first.next.prev = null;
+            first = first.next;
+            size--;
+            return oldValue;
+        }
+        if (index == size - 1) {
+            last.prev.next = null;
+            last = last.prev;
+            size--;
+            return oldValue;
+        }
+        Node<E> nodePrev = getNode(index - 1);
+        Node<E> nodeNext = getNode(index + 1);
+        nodePrev.next = nodeNext;
+        nodeNext.prev = nodePrev;
+        size--;
+
+        return oldValue;
+    }
+
     @Override
     public String toString() {
         if (size == 0) {
